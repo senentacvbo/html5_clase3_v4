@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>Ejemplo query selector</title>
-		
+
 		<style type="text/css">
-		    @font-face {
+			@font-face {
 				font-family: 'marck_script';
 				src: url('../fuentes/marckscript.eot'); /* IE9 Compat Modes */
 				src: url('../fuentes/marckscript.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -13,25 +13,32 @@
 				url('../fuentes/marckscript.ttf') format('truetype'), /* Safari, Android, iOS */
 				url('../fuentes/marckscript.svg#marck script') format('svg'); /* Legacy iOS */
 			}
-		
+
 			p {
 				border-style: solid;
 				padding: 10px;
 				margin-bottom: 20px;
-			}						
-			
-			.relleno{
-				background-image: url("imagenes/fondo_cuadros.jpg");				
 			}
 			
-			.esquinas{
+			div {
+				border-style: solid;
+				border-color:green;
+				padding: 10px;
+				margin-bottom: 20px;
+			}
+
+			.relleno {
+				background-image: url("imagenes/fondo_cuadros.jpg");
+			}
+
+			.esquinas {
 				/* ------------ ESQUINAS REDONDAS ---------------*/
 				-webkit-border-radius: 10px;
 				-moz-border-radius: 10px;
 				-o-border-radius: 10px;
 				border-radius: 10px;
 			}
-				
+
 			.sombras {
 				/*------------------ SOMBRAS ---------------------*/
 				/*sombras*/
@@ -42,28 +49,52 @@
 			}
 
 		</style>
-		
+
 		<script src="http://codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
 		<script>
-			$(function(){
-				
-				var parrafo = $("#texto2");
-				//alert("texto antes de cambiar:" + parrafo.html());
-				parrafo.html("nuevo texto");
-				alert(parrafo.attr("id"));
-				//parrafo.attr("class", parrafo.attr("class") + " sombras");
-				//equivalentemente:				
-				parrafo.addClass("sombras");
-				
+			$(function() {
+
+				$(document).click(function(evento) {
+					
+					var parrafo = $("p");
+					//$("#log").html("clases:" + parrafo.attr("class","relleno esquinas sombras"));
+
+					
+					//alert("texto antes de cambiar:" + parrafo.html());
+					parrafo.html("nuevo texto");
+					//alert(parrafo.attr("id"));
+					//parrafo.attr("class", parrafo.attr("class") + " sombras");
+					//equivalentemente:
+					parrafo.addClass("sombras esquinas");
+
+					//alert("x:" + evento.pageX + ", y" + evento.pageY);
+					
+					parrafo.load("text.txt").error(function(){
+						alert("error");
+					});
+
+				});
+
 			});
 		</script>
 	</head>
 	<body>
-		<p id="texto1">Texto 1</p>
-		<p id="texto2" class="relleno">Texto 2</p>
-		<p id="texto3">Texto 3</p>
 		
-		<button id="boton">Cambiar texto</button>		
+		<p id="texto1" class="relleno">
+			Texto 1
+		</p>
+		<p id="texto2" class="relleno">
+			Texto 2
+		</p>		
+		<p id="texto3" class="relleno2">
+			Texto 3
+		</p>
+		
+		<div id="log">log</div>
+
+		<button id="boton">
+			Cambiar texto
+		</button>
 
 	</body>
 </html>
