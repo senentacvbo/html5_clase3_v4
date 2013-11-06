@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>javascript</title>
+		
+		<style>
+		
+			#mapa-hybrid, #mapa-roadmap, #mapa-satellite, #mapa-terrain{
+				height: 400px;
+				width: 400px;
+			}			
+			
+		</style>
+
+		<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script src="javascript/jquery.gomap-1.3.2.min.js"></script>
+
+		<script>
+		
+			function pintaMapas(posicion) {
+
+				var latitude = posicion.coords.latitude;
+				var longitude = posicion.coords.longitude;
+				
+				$("#mapa-roadmap").goMap({
+					markers : [{
+						latitude:latitude,
+						longitude:longitude
+					}],
+					zoom:15,
+					maptype:"ROADMAP"
+				});
+				
+				$("#mapa-satellite").goMap({
+					markers : [{
+						latitude:latitude,
+						longitude:longitude
+					}],
+					zoom:15,
+					maptype:"SATELLITE"
+				});
+				
+				$("#mapa-hybrid").goMap({
+					markers : [{
+						latitude:latitude,
+						longitude:longitude
+					}],
+					zoom:15,
+					maptype:"HYBRID"
+				});	
+				
+				$("#mapa-terrain").goMap({
+					markers : [{
+						latitude:latitude,
+						longitude:longitude
+					}],
+					zoom:15,
+					maptype:"TERRAIN"
+				});		
+				
+				
+			}
+
+			$(function() {				
+				navigator.geolocation.getCurrentPosition(pintaMapas);
+				
+			});
+
+		</script>
+
+	</head>
+	<body>
+		
+		<h2>ROADMAP</h2>
+		<div id="mapa-roadmap">			
+		</div>
+		
+		<h2>SATELLITE</h2>
+		<div id="mapa-satellite">			
+		</div>
+		
+		<h2>HYBRID</h2>
+		<div id="mapa-hybrid">			
+		</div>
+		
+		<h2>TERRAIN</h2>
+		<div id="mapa-terrain">			
+		</div>
+		
+	</body>
+</html>
