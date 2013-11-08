@@ -2,54 +2,75 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title>javascript</title>
+		<title>Ejercicio 23</title>
 
 		<style>
-			#mapa{
-				height: 600px;
-				width: 600px;
+			body {
+				background: url(../imagenes/fondo_granulado.png);
 			}
+
+			#contenedor {
+				width: 800px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			#contenido {
+				margin-left: 185px;
+			}
+
+			#menu-imagenes {
+				float: left;
+				width: 180px;
+			}
+
+			.preview {
+				cursor: hand;
+				cursor: pointer;
+				margin-bottom: 20px;
+			}
+
 		</style>
 
-		<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-		<script src="../javascript/jquery.gomap-1.3.2.min.js"></script>
+		<script src="../javascript/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
 
-		<script>
-		
-			function pintaMapa(posicion) {
+				$(".preview").click(function(evento) {
 
-				var latitude = posicion.coords.latitude;
-				var longitude = posicion.coords.longitude;
-				
-				$("#mapa").goMap({					
-					markers : [{
-						latitude:latitude,
-						longitude:longitude,
-						draggable:true,
-						icon:"../imagenes/apartamento.png",
-						title:"marker title",
-						html:"hola mundo"
-					}],
-					zoom:15
-				});				
-			}
+					var imagenNormal = $("#imagen-normal");
 
-			$(function() {				
-
-				$("button").click(function(){
-					navigator.geolocation.getCurrentPosition(pintaMapa);				
+					imagenNormal.fadeOut("slow", function() {
+						var preview = $(evento.target);
+						var rutaImagen = preview.attr("data-src-imagen");
+						imagenNormal.attr("src", rutaImagen);
+						
+						imagenNormal.fadeIn("slow");
+					});
 				});
-				
+
 			});
 
+			//su codigo aqui
 		</script>
-
-
 	</head>
 	<body>
-		
-		<button>Mostrar mapa</button>
-		<div id="mapa"> </div>
+
+		<div id="contenedor">
+			
+			<div id="menu-imagenes">
+				<img class="preview" src="../imagenes/imagen1_preview.jpg" data-src-imagen="../imagenes/imagen1.jpg" />
+				<img class="preview" src="../imagenes/imagen2_preview.jpg" data-src-imagen="../imagenes/imagen2.jpg" />
+				<img class="preview" src="../imagenes/imagen3_preview.jpg" data-src-imagen="../imagenes/imagen3.jpg" />
+				<img class="preview" src="../imagenes/imagen4_preview.jpg" data-src-imagen="../imagenes/imagen4.jpg" />
+				<img class="preview" src="../imagenes/imagen5_preview.jpg" data-src-imagen="../imagenes/imagen5.jpg" />
+			</div>
+
+			<div id="contenido">
+				<img id="imagen-normal" src="../imagenes/imagen1.jpg"  />
+			</div>
+
+		</div>
+
 	</body>
 </html>
