@@ -19,10 +19,10 @@
 				padding: 10px;
 				margin-bottom: 20px;
 			}
-			
+
 			div {
 				border-style: solid;
-				border-color:green;
+				border-color: green;
 				padding: 10px;
 				margin-bottom: 20px;
 			}
@@ -52,22 +52,50 @@
 
 		<script src="http://codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
 		<script>
+			$(function() {
+				//alert(666+" la marca del diablo");
+				//var parrafo2 = $("#texto2");
+				//parrafo2.html("Es cosa del diablo!!!!");
+				var boton = $("#boton");
+				boton.click(function() {
+					var parrafo3 = $("p");//solo selectores de CSS
+					// alert(parrafo3.html());
+					//alert(parrafo3.attr("class"));
+					parrafo3.attr("class", "relleno esquinas");
+					parrafo3.addClass("sombras");
+					/*parrafo3.fadeOut(5000,function(){
+						parrafo3.fadeIn(5000);
+						
+					});//Desaparece los parrafos desvaneciendolos*/
+					
+				parrafo3.slideUp(2500, function(){
+					parrafo3.slideDown(2500);
+				});	
+					
+					
+					//parrafo3.removeClass("sombras");
+
+				});
+
+			});
 
 		</script>
 	</head>
 	<body>
-		
+
 		<p id="texto1" class="relleno">
 			Texto 1
 		</p>
 		<p id="texto2" class="relleno">
 			Texto 2
-		</p>		
+		</p>
 		<p id="texto3" class="relleno2">
 			Texto 3
 		</p>
-		
-		<div id="log">log</div>
+
+		<div id="log">
+			log
+		</div>
 
 		<button id="boton">
 			Cambiar texto
