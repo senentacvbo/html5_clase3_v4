@@ -16,62 +16,61 @@
 				width: 500px;
 			}
 		</style>
-		
+
 		<script src="../javascript/jquery-1.10.2.min.js"></script>
-		<script>		
+		<script>
 			/*Parte 1
-			$(function(){
-				var boton=$("#boton-animar");
-				
-				boton.click(function(){
-					var imagen=$("img");
-					imagen.attr("src","../imagenes/happy_homer.jpg");
-					var texto=$("#estado");
-					texto.html("Homero Feliz");				
-				});
-			});*/
-			
-			cambiar_boton=false;
-			
-			$(function(){
-				var boton=$("#boton-animar");
-				
-				boton.click(function(){
-					
-					if(cambiar_boton == false){
-					
-					var imagen=$("img");
-					imagen.fadeOut("slow",function(){
-						imagen.attr("src","../imagenes/sad_homer.jpg");
-						var texto=$("#estado");
-						texto.html("Homero Triste");
-						imagen.fadeIn("slow");
-					});
-					
-					cambiar_boton=true;
-					
-					}else{
-					
-						var imagen=$("img");
-						imagen.fadeOut("slow",function(){
-						imagen.attr("src","../imagenes/happy_homer.jpg");
-						var texto=$("#estado");
-						texto.html("Homero Feliz");
-						imagen.fadeIn("slow");
-					});
-					cambiar_boton=false;
-					
+			 $(function(){
+			 var boton=$("#boton-animar");
+
+			 boton.click(function(){
+			 var imagen=$("img");
+			 imagen.attr("src","../imagenes/happy_homer.jpg");
+			 var texto=$("#estado");
+			 texto.html("Homero Feliz");
+			 });
+			 });*/
+
+			cambiar_boton = false;
+
+			$(function() {
+				var boton = $("#boton-animar");
+
+				boton.click(function() {
+
+					if (cambiar_boton == false) {
+
+						var imagen = $("img");
+						imagen.fadeOut("slow", function() {
+							imagen.attr("src", "../imagenes/sad_homer.jpg");
+							var texto = $("#estado");
+							texto.html("Homero Triste");
+							imagen.fadeIn("slow");
+						});
+
+						cambiar_boton = true;
+
+					} else {
+
+						var imagen = $("img");
+						imagen.fadeOut("slow", function() {
+							imagen.attr("src", "../imagenes/happy_homer.jpg");
+							var texto = $("#estado");
+							texto.html("Homero Feliz");
+							imagen.fadeIn("slow");
+						});
+						cambiar_boton = false;
+
 					}
-					
+
 				});
 			});
-			
-			
+
 		</script>
 
 	</head>
 	<body>
-		
+
 		<p>
 			<button id="boton-animar" >
 				Animar!
@@ -84,8 +83,6 @@
 				Homero Triste
 			</p>
 		</div>
-		
-
 
 	</body>
 </html>
